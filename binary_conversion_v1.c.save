@@ -1,0 +1,34 @@
+nclude <stdio.h>
+
+// Функція для виведення числа у двійковому форматі за допомогою бітових операцій
+void print_binary_bitwise(unsigned int num, int bits) {
+    for (int i = bits - 1; i >= 0; i--) {
+        // Використовуємо зсув і логічне І
+        printf("%d", (num >> i) & 1);
+        // Виводимо пробіл кожні 4 біти для кращої читабельності
+        if (i % 4 == 0) printf(" ");
+    }
+    printf("\n");
+}
+
+int main() {
+    unsigned char num8 = 0xFA; // 8-бітне число (1111 1010)
+    unsigned short num16 = 0xFAFA; // 16-бітне число
+    unsigned int num32 = 0xFAFAFAFA; // 32-бітне число
+    unsigned long long num64 = 0xFAFAFAFAFAFAFAFA; // 64-бітне число
+
+    printf("8-bit: ");
+    print_binary_bitwise(num8, 8);
+
+    printf("16-bit: ");
+    print_binary_bitwise(num16, 16);
+
+    printf("32-bit: ");
+    print_binary_bitwise(num32, 32);
+
+    printf("64-bit: ");
+    print_binary_bitwise(num64, 64);
+
+    return 0;
+}
+
